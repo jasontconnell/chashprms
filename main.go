@@ -4,7 +4,6 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"os"
-	"strings"
 )
 
 func sha256sum(d []byte) []byte {
@@ -22,10 +21,10 @@ func main() {
 
 	contents := ""
 	if len(os.Args) == 2 {
-		contents = strings.Join(os.Args[1:], " ")
+		contents = os.Args[1]
 	}
 
 	sum := sha256sum([]byte(contents))
 
-	fmt.Println(fmt.Sprintf("%x", sum))
+	fmt.Println(fmt.Sprintf("%x %s", sum, contents))
 }
